@@ -1,6 +1,6 @@
 # Vm para chip 8
 
-🧱 TODO
+## TODO
 - [X] Código-fonte completo e funcional
 - [X] Comentários
 - [X] Makefile universal (Linux + mac)
