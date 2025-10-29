@@ -1,6 +1,6 @@
-#include "chip8.h"
-#include "keyboard.h"
-#include "display.h"
+#include "../defs/chip8.h"
+#include "../defs/keyboard.h"
+#include "../defs/display.h"
 #include <cstdio>
 #include <cstring>
 #include <fstream>

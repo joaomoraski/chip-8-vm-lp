@@ -4,10 +4,10 @@
 #include <string>
 #include <chrono>
 
-#include "chip8.h"
-#include "display.h"
-#include "keyboard.h"
-#include "defs.h"
+#include "../defs/chip8.h"
+#include "../defs/display.h"
+#include "../defs/keyboard.h"
+#include "../defs/defs.h"
 
 // struct pra guardar as configs que vem da linha de comando
 struct Config {

@@ -1,4 +1,4 @@
-#include "display.h"
+#include "../defs/display.h"
 #include <cstdio>
 
 // construtor, ja deixa os ponteiros nulos e a escala padrao

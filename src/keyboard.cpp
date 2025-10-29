@@ -1,4 +1,4 @@
-#include "keyboard.h"
+#include "../defs/keyboard.h"
 #include <SDL2/SDL.h>
 #include <map>
 
