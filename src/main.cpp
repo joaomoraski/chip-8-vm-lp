@@ -13,7 +13,6 @@
 struct Config {
     int scale = DEFAULT_SCALE;       // tamanho da tela
     int clock_hz = DEFAULT_CLOCK_HZ; // velocidade da cpu
-    uint16_t pc_start = DEFAULT_PC_START; // endereco de inicio
     std::string rom;                 // caminho da rom
     int color_r = 255;               // cor padrao (branco)
     int color_g = 255;
@@ -27,10 +26,9 @@ static void print_help(const char *prog) {
         "Opcoes:\n"
         "  --scale <n>        escala da janela (padrao %d)\n"
         "  --clock <hz>       velocidade da cpu (padrao %d)\n"
-        "  --pc <hex>         endereco inicial (padrao 0x%X)\n"
         "  --color <r> <g> <b> cor dos pixels (0-255 cada, padrao branco)\n"
         "  --help             mostra essa mensagem\n",
-        prog, DEFAULT_SCALE, DEFAULT_CLOCK_HZ, DEFAULT_PC_START);
+        prog, DEFAULT_SCALE, DEFAULT_CLOCK_HZ);
 }
 
 // le os argumentos do terminal
@@ -45,9 +43,6 @@ static bool parse_args(int argc, char **argv, Config &cfg) {
 
         } else if (std::strcmp(argv[i], "--clock") == 0 && i + 1 < argc) {
             cfg.clock_hz = std::atoi(argv[++i]);
-
-        } else if (std::strcmp(argv[i], "--pc") == 0 && i + 1 < argc) {
-            cfg.pc_start = static_cast<uint16_t>(std::strtoul(argv[++i], nullptr, 16));
 
         } else if (std::strcmp(argv[i], "--color") == 0 && i + 3 < argc) {
             // nova opcao pra definir cor pelo terminal
@@ -89,8 +84,8 @@ int main(int argc, char **argv) {
 
     // cria a vm e carrega a rom
     Chip8 vm;
-    vm.initialize(cfg.pc_start);
-    if (!vm.loadROM(cfg.rom, cfg.pc_start)) {
+    vm.initialize();
+    if (!vm.loadROM(cfg.rom)) {
         std::fprintf(stderr, "Falha ao carregar ROM: %s\n", cfg.rom.c_str());
         return 1;
     }

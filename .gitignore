@@ -118,7 +118,8 @@ CMakeUserPresets.json
 
 # Local History for Visual Studio Code
 .history/
-
+*.o
+chip8
 # Built Visual Studio Code Extensions
 *.vsix
 
